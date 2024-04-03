@@ -4,7 +4,15 @@ export default function Options() {
     const [clicksGood, setClicksGood] = useState(0);
     const [clicksBad, setClicksBad] = useState(0);
     const [clicksNeutral, setClicksNeutral] = useState(0);
-
+useEffect(() => {
+    window.localStorage.setItem("good", JSON.stringify({clicksGood}));
+  }, [clicksGood]);
+    useEffect(() => {
+    window.localStorage.setItem("bad",JSON.stringify({clicksBad}) );
+    }, [clicksBad]);
+    useEffect(() => {
+    window.localStorage.setItem("neutral", JSON.stringify({clicksNeutral}));
+    }, [clicksNeutral]);
     
     const handleClickGood = () => {
         setClicksGood(clicksGood + 1); 
@@ -16,9 +24,9 @@ export default function Options() {
   setClicksBad(clicksBad + 1);
      };
     const handleClickReset = () => {
-        setClicksGood(clicksGood (0));
-        setClicksBad(clicksBad (0));   
-        setClicksNeutral(clicksNeutral (0));        
+        setClicksGood(0);
+        setClicksBad(0);   
+        setClicksNeutral(0);        
      };
 
 

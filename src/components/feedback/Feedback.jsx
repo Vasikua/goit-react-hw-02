@@ -6,6 +6,6 @@ export default function Feedback({ data: { good, neutral, bad } }) {
         <p>Neutral: {neutral }</p>
         <p>Bad: { bad}</p>
         <p>Total: {total}</p>
-        <p>Positiv: {positivFeedBack}</p>
+        <p>Positiv: {positivFeedBack}%</p>
     </>
 }

@@ -1,39 +1,14 @@
-import { useState, useEffect } from 'react'
-export default function Options() {
-
-    const [clicksGood, setClicksGood] = useState(0);
-    const [clicksBad, setClicksBad] = useState(0);
-    const [clicksNeutral, setClicksNeutral] = useState(0);
-useEffect(() => {
-    window.localStorage.setItem("good", JSON.stringify({clicksGood}));
-  }, [clicksGood]);
-    useEffect(() => {
-    window.localStorage.setItem("bad",JSON.stringify({clicksBad}) );
-    }, [clicksBad]);
-    useEffect(() => {
-    window.localStorage.setItem("neutral", JSON.stringify({clicksNeutral}));
-    }, [clicksNeutral]);
+ 
+export default function Options({ updateFeedback,  getInitialValues}) {
     
-    const handleClickGood = () => {
-        setClicksGood(clicksGood + 1); 
-     };
-    const handleClickNeutral = () => {
-        setClicksNeutral(clicksNeutral + 1);
-     };
-    const handleClickBad = () => {
-  setClicksBad(clicksBad + 1);
-     };
-    const handleClickReset = () => {
-        setClicksGood(0);
-        setClicksBad(0);   
-        setClicksNeutral(0);        
-     };
-
-
-    return <>
-        <button onClick={handleClickGood}>Good</button>
-        <button onClick={handleClickNeutral}>Neutral</button>
-        <button onClick={handleClickBad}>Bad</button>
-        <button onClick={handleClickReset}>Reset</button>
-    </>
+         return <>
+            <button onClick={() => updateFeedback("good")} >Good</button>
+            <button onClick={() => updateFeedback("neutral")}>Neutral</button>
+            <button onClick={() => updateFeedback("bad")}>Bad</button>
+             { JSON.stringify(getInitialValues()) !== JSON.stringify({ good: 0, bad: 0, neutral: 0 }) ?
+                 (<button onClick={() => updateFeedback("resetAll")}>Reset</button>)
+                 :
+                 (<button disabled ></button>)
+             }
+        </>
 }

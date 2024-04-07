@@ -17,10 +17,13 @@ function App() {
         neutral: 0
         };
     }
- 
-  const [values, setValues] = useState(getInitialValues)
-
-  const updateFeedback = (key) => {
+  
+  const [values, setValues] = useState(getInitialValues);
+  
+  const total =  values.good  +  values.bad  +  values.neutral ;
+  const positivFeedBack = Math.round(( values.good  / total) * 100);
+  
+    const updateFeedback = (key) => {
     key === "resetAll" ?
       setValues({
         good: 0,
@@ -38,11 +41,12 @@ function App() {
     localStorage.setItem('values', JSON.stringify(values));
   }, [values]);
 
+  
     return (
       <>
         <Description />
-        <Options updateFeedback={updateFeedback} getInitialValues = {getInitialValues} />
-        <Feedback good = {values.good} bad = {values.bad} neutral = {values.neutral} />
+        <Options updateFeedback={updateFeedback} show = {total} />
+        <Feedback good = {values.good} bad = {values.bad} neutral = {values.neutral} total={total} positivFeedBack={positivFeedBack} />
       </>
     )
   }

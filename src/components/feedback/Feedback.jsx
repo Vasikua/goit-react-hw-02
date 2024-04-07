@@ -1,9 +1,8 @@
 
 import css from "./Feedback.module.css"
-export default function Feedback({ good, bad, neutral }) {
+export default function Feedback({ good, bad, neutral, total, positivFeedBack }) {
     
- const total = good + bad + neutral;
-    const positivFeedBack = Math.round((good / total) * 100);
+ 
     
     return (
         <ul className={css.list}>

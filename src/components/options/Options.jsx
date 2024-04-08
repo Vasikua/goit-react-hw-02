@@ -5,10 +5,8 @@ export default function Options({ updateFeedback,  show}) {
             <button className={css.feedbackBtn} onClick={() => updateFeedback("good")} >Good</button>
             <button className={css.feedbackBtn} onClick={() => updateFeedback("neutral")}>Neutral</button>
             <button className={css.feedbackBtn} onClick={() => updateFeedback("bad")}>Bad</button>
-             { show > 0  ?
-                 (<button className={css.feedbackBtn} onClick={() => updateFeedback("resetAll")}>Reset</button>)
-                 :
-                 (<button className={css.feedbackOff} ></button>)
+             {
+                 show > 0 && <button className={css.feedbackBtn} onClick={() => updateFeedback("resetAll")}>Reset</button>
              }
         </div>
 }

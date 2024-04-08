@@ -1,6 +1,7 @@
 
 import './App.css'
 import Description from './components/description/Description'
+import Notification from './components/Notification/Notification'
 import Options from './components/options/Options'
 import Feedback from './components/feedback/Feedback'
 import { useEffect, useState } from 'react'
@@ -45,8 +46,18 @@ function App() {
     return (
       <>
         <Description />
-        <Options updateFeedback={updateFeedback} show = {total} />
-        <Feedback good = {values.good} bad = {values.bad} neutral = {values.neutral} total={total} positivFeedBack={positivFeedBack} />
+        <Options updateFeedback={updateFeedback} show={total} />
+        {total > 0 ?
+          (<Feedback
+            good={values.good}
+            bad={values.bad}
+            neutral={values.neutral}
+            total={total}
+            positivFeedBack={positivFeedBack} />)
+          :
+          (<Notification />)
+        }
+        
       </>
     )
   }

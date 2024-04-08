@@ -1,7 +1,7 @@
 
 import './App.css'
 import Description from './components/description/Description'
-import Notification from './components/notification/Notification'
+import Notification from './components/Notification/Notification'
 import Options from './components/options/Options'
 import Feedback from './components/feedback/Feedback'
 import { useEffect, useState } from 'react'
